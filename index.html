@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>パスワード保護サイト</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #333;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    header a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    /* パスワード画面 */
+    #password-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f5f5f5;
+    }
+
+    #password-screen input {
+      padding: 10px;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+
+    #password-screen button {
+      padding: 10px 20px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    #password-screen button:hover {
+      background: #333;
+    }
+
+    /* 隠す用 */
+    #site-content {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- パスワード入力画面 -->
+  <div id="password-screen">
+    <h2>パスワードを入力してください</h2>
+    <input type="password" id="password-input" placeholder="パスワード" />
+    <button onclick="checkPassword()">送信</button>
+    <p id="error-message" style="color:red; display:none;">パスワードが違います</p>
+  </div>
+
+  <!-- 本編 -->
+  <div id="site-content">
+    <header>
+      <h1><a href="index.html">サイト名</a></h1>
+      <nav>
+        <a href="page2.html">サイト2</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>ようこそ！</h2>
+      <a hlef="index2.html">画像配布</a>
+    </main>
+  </div>
+
+  <script>
+    const correctPassword = "syutaisei";
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const error = document.getElementById("error-message");
+
+      if (input === correctPassword) {
+        sessionStorage.setItem("authenticated", "true");
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("site-content").style.display = "block";
+      } else {
+        error.style.display = "block";
+      }
+    }
+
+    // 再訪問時に保持
+    window.onload = function () {
+      if (sessionStorage.getItem("authenticated") === "true") {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("site-content").style.display = "block";
+      }
+    };
+  </script>
+</body>
+</html>
