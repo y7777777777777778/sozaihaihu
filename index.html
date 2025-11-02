@@ -6,36 +6,39 @@
   <title>パスワード保護サイト</title>
   <style>
     :root {
-      --main-bg: #fff;
-      --main-color: #333;
+      --bg: #f8f8f8;
+      --card-bg: #fff;
+      --text: #222;
       --accent: #000;
-      --hover: #555;
-      --light-gray: #f5f5f5;
+      --gray: #777;
+      --hover: #333;
       --transition: 0.3s ease;
-      font-family: "Segoe UI", "Noto Sans JP", sans-serif;
+      --radius: 16px;
+      font-family: "Noto Sans JP", "Segoe UI", sans-serif;
     }
 
     body {
       margin: 0;
-      background: var(--main-bg);
-      color: var(--main-color);
+      background: var(--bg);
+      color: var(--text);
     }
 
-    /* ========== Header ========== */
+    /* ===== Header ===== */
     header {
       background: var(--accent);
       color: #fff;
-      padding: 15px 30px;
+      padding: 20px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.5em;
+      font-size: 1.6em;
       font-weight: 600;
+      letter-spacing: 0.03em;
     }
 
     header a {
@@ -49,74 +52,33 @@
     }
 
     nav a {
-      margin-left: 20px;
+      margin-left: 25px;
       font-weight: 500;
     }
 
-    /* ========== Main ========== */
-    main {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    main a {
-      display: inline-block;
-      margin: 15px;
-      padding: 12px 25px;
-      text-decoration: none;
-      color: var(--main-color);
-      border: 1.5px solid var(--main-color);
-      border-radius: 25px;
-      transition: var(--transition);
-      font-weight: 500;
-    }
-
-    main a:hover {
-      background: var(--main-color);
-      color: #fff;
-    }
-
-    /* 特殊ボタン */
-    .button a {
-      position: relative;
-      overflow: hidden;
-      display: inline-block;
-      border-radius: 30px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 12px 30px;
-      color: #fff;
-      background: var(--accent);
-      transition: var(--transition);
-    }
-
-    .button a:hover {
-      background: var(--hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    /* ========== Password Screen ========== */
+    /* ===== Password Screen ===== */
     #password-screen {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: var(--light-gray);
+      background: linear-gradient(135deg, #f0f0f0, #dcdcdc);
       text-align: center;
     }
 
     #password-screen h2 {
-      font-size: 1.5em;
-      margin-bottom: 20px;
+      font-size: 1.6em;
+      margin-bottom: 25px;
+      color: var(--text);
+      letter-spacing: 0.05em;
     }
 
     #password-screen input {
-      padding: 12px 15px;
+      padding: 12px 16px;
       font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      border: 1px solid #aaa;
+      border-radius: 8px;
       width: 250px;
       outline: none;
       transition: var(--transition);
@@ -133,7 +95,7 @@
       background: var(--accent);
       color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 1em;
       cursor: pointer;
       transition: var(--transition);
@@ -148,10 +110,10 @@
       margin-top: 10px;
     }
 
-    /* ========== Hidden Section ========== */
+    /* ===== Site Content ===== */
     #site-content {
       display: none;
-      animation: fadeIn 0.5s ease-in-out;
+      animation: fadeIn 0.6s ease-in-out;
     }
 
     @keyframes fadeIn {
@@ -159,7 +121,50 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== Responsive ========== */
+    main {
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .link-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .link-card a {
+      display: inline-block;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 10px 0;
+      transition: color var(--transition);
+    }
+
+    .link-card a:hover {
+      color: var(--hover);
+    }
+
+    .description {
+      color: var(--gray);
+      font-size: 0.9em;
+      margin-top: 8px;
+      line-height: 1.5em;
+    }
+
+    /* ===== Responsive ===== */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -167,15 +172,12 @@
       }
 
       nav a {
-        margin-left: 0;
-        margin-right: 15px;
+        margin: 10px 10px 0 0;
         display: inline-block;
       }
 
-      main a {
-        display: block;
-        margin: 10px auto;
-        width: 80%;
+      main {
+        padding: 40px 15px;
       }
     }
   </style>
@@ -199,10 +201,19 @@
     </header>
 
     <main>
-      <a href="https://line.me/S/sticker/31907007/?lang=ja&utm_source=gnsh_stickerDetail">LINEスタンプ</a>
-      <a href="index.html">画像配布</a>
-      <div class="button">
-        <a href="index2.html"><span>素材配布</span></a>
+      <div class="link-card">
+        <a href="https://line.me/S/sticker/31907007/?lang=ja&utm_source=gnsh_stickerDetail">LINEスタンプ</a>
+        <p class="description">オリジナルのLINEスタンプをチェック。トークをもっと楽しく彩ります。</p>
+      </div>
+
+      <div class="link-card">
+        <a href="index.html">画像配布</a>
+        <p class="description">高品質な画像素材を自由にダウンロードできます。</p>
+      </div>
+
+      <div class="link-card">
+        <a href="index2.html">素材配布</a>
+        <p class="description">デザイン制作に役立つ素材やアイコンをまとめて配布中。</p>
       </div>
     </main>
   </div>
