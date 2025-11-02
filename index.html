@@ -37,6 +37,74 @@
       padding: 20px;
     }
 
+    .button a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 230px;
+    padding: 10px 0px 10px 25px;
+    font-family: "Noto Sans Japanese";
+    line-height: 1.8;
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+
+.button a:before, .button a:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+}
+.button a:before {
+  width: 0.5rem;
+  height: 0.5rem;
+  left: 1.1rem;
+  border-top: solid 2px #333;
+  border-right: solid 2px #333;
+  z-index: 2;
+  transform: translateY(-50%) rotate(45deg);
+  transition: all 0.3s;
+}
+.button a:after {
+  left: 0;
+  background: #eee;
+  z-index: 1;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 4rem;
+  transform: translateY(-50%);
+  transition: all 0.5s;
+}
+.button a span {
+  position: relative;
+  transition: all 0.3s;
+  z-index: 3;
+}
+
+.button a:hover span {
+  color: #fff;
+}
+.button a:hover:before {
+  left: 2.5rem;
+  border-top: solid 2px #fff;
+  border-right: solid 2px #fff;
+}
+.button a:hover:after {
+  right: 0;
+  width: 100%;
+  background: #333;
+}
+
+body{
+    vertical-align:middle; 
+    padding: 50px 0;
+    text-align: center;
+}
+
     /* パスワード画面 */
     #password-screen {
       display: flex;
@@ -95,6 +163,9 @@
       <a href="
 https://line.me/S/sticker/31907007/?lang=ja&utm_source=gnsh_stickerDetail">LINEスタンプ</a>
       <a href="index.html">画像配布</a>
+      <div class="button">
+  <a href="index2.html"><span>素材配布</span></a>
+</div>
     </main>
   </div>
 
