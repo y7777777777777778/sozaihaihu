@@ -1,0 +1,55 @@
+    <header>
+      <h1><a href="index.html">素材配布</a></h1>
+      <nav>
+        <a href="index2.html">佐々木系</a>  <a href="index3.html">あべ系</a>
+        <a href="index4.html">動画編集系</a>
+      </nav>
+    </header>
+
+    <main>
+      
+      <!-- 画像 -->
+<img src="images/example.png" alt="">
+      <!-- 動画 -->
+      <video controls width="600">
+  <source src="" type="video/mp4">
+  お使いのブラウザは video タグに対応していません。
+</video>
+      <video controls width="600">
+  <source src="" type="video/mp4">
+  お使いのブラウザは video タグに対応していません。
+</video>
+<video controls width="600">
+  <source src="" type="video/mp4">
+  お使いのブラウザは video タグに対応していません。
+</video>
+
+
+    </main>
+  </div>
+
+  <script>
+    const correctPassword = "syutaisei";
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const error = document.getElementById("error-message");
+
+      if (input === correctPassword) {
+        sessionStorage.setItem("authenticated", "true");
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("site-content").style.display = "block";
+      } else {
+        error.style.display = "block";
+      }
+    }
+
+    window.onload = function () {
+      if (sessionStorage.getItem("authenticated") === "true") {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("site-content").style.display = "block";
+      }
+    };
+  </script>
+</body>
+</html>
